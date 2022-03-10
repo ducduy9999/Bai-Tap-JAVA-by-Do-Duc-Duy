@@ -1,25 +1,22 @@
 package com.trungtamjava.model;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class School {
 	private int id;
 	private String nameSchool;
 	private String diaChi;
-
+    
 	public void info() {
-		System.out.println("id:");
-		;
-		System.out.println("nameSchool: ");
-		;
-		System.out.println("diaChi: ");
-		;
+		System.out.println("id:"+id);
+		System.out.println("nameSchool: "+nameSchool);
+		System.out.println("diaChi: "+diaChi);
 	}
 
-	public void input() {
-		System.out.println("nhap so id: ");
-		id = new Scanner(System.in).nextInt();
-		
+	public void input(int i) {
+		id = i;
+
 		System.out.println("nhap truong Dai Hoc: ");
 		nameSchool = new Scanner(System.in).nextLine();
 
@@ -28,18 +25,11 @@ public class School {
 
 	}
 
+	public static void checkSchool() {
+
+	}
+
 	public School() {
-
-	}
-
-	public School(String nameSchool, String diaChi) {
-		this.id = id;
-		this.nameSchool = nameSchool;
-		this.diaChi = diaChi;
-	}
-
-	public School(int id) {
-		this.id = id;
 
 	}
 
