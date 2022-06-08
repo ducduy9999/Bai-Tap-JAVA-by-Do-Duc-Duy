@@ -7,7 +7,7 @@
 		<input type="text" id="age" value="">
 		<input type="text" id="address" value="">
 		<input type="text" id="searchUser" value="">
-		<button type="button" id="searchUser" onclick="searchUser1(name)">Search</button>
+		<button type="button" id="searchUser" onclick="searchUser1()">Search</button>
 		<button type="button" id="saveBtn" onclick="createUser()">Save</button>
 		<button type="button" id="updateBtn" onclick="updateBtn1()" style="display: none">Update</button>
 
@@ -40,15 +40,10 @@
 			var tdOption = document.createElement("td");
 			var btnDel = document.createElement("button");
 			var btnEdit = document.createElement("button");
-			var btnSearch = document.createElement("button");
 
 			btnDel.innerText = "Delete"
 			btnEdit.innerText = "Edit"
-			btnSearch.innerHTML="Search"
 
-			btnSearch.onclick = function(){
-				searchUser1(user.name)
-			}
 
 			btnDel.onclick = function () {
 				console.log(id)
@@ -140,10 +135,16 @@
 			document.getElementById("updateBtn").style.display = "none"
 			document.getElementById("saveBtn").style.display = "block"
 		}
-		function searchUser1(name) {
+		function searchUser1() {
+			var nameInput = document.getElementById("searchUser")
+			var name = nameInput.value;
+			console.log(name);
 
-			let index = users.findIndex(u => u.name == name); // ham loc nhanh hon de tim id xoa
-			resetDrawTable(users)
+			let index = users.findIndex(u => u.name == name); // ham loc nhanh hon de tim id xoas
+			let user = users[index];
+			console.log(users);
+
+			resetDrawTable([user])
 		}
 	</script>
 
