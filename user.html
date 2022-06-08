@@ -1,0 +1,153 @@
+<html>
+
+<body>
+	<form id="form">
+		<input type="text" id="id" value="">
+		<input type="text" id="name" value="">
+		<input type="text" id="age" value="">
+		<input type="text" id="address" value="">
+		<input type="text" id="searchUser" value="">
+		<button type="button" id="searchUser" onclick="searchUser1()">Search</button>
+		<button type="button" id="saveBtn" onclick="createUser()">Save</button>
+		<button type="button" id="updateBtn" onclick="updateBtn1()" style="display: none">Update</button>
+
+	</form>
+	<table border="1">
+		<!-- in dam xung quanh vien -->
+		<tr>
+			<td>Id</td>
+			<td>Name</td>
+			<td>Age</td>
+			<td>Address</td>
+			<td>Option</td>
+		</tr>
+		<tbody id="tableBody">
+		</tbody>
+	</table>
+	<script>
+		var users = [
+			{ id: 1, name: "abc", age: 22, address: "okk" },
+			{ id: 2, name: "bcd", age: 23, address: "koo" },
+			{ id: 3, name: "ief", age: 24, address: "kqoq" }
+		]
+		function drawTr(user) {
+			var tr = document.createElement("tr");
+			var tdId = document.createElement("td");
+			var tdName = document.createElement("td");
+			var tdAge = document.createElement("td");
+			var tdAddress = document.createElement("td");
+
+			var tdOption = document.createElement("td");
+			var btnDel = document.createElement("button");
+			var btnEdit = document.createElement("button");
+
+			btnDel.innerText = "Delete"
+			btnEdit.innerText = "Edit"
+
+
+			btnDel.onclick = function () {
+				console.log(id)
+				deleteUser(user.id)
+			}
+			btnEdit.addEventListener("click", function () {
+				editUser(user.id)
+
+			})
+
+			tdOption.appendChild(btnDel)
+			tdOption.appendChild(btnEdit)
+
+			tdId.innerHTML = user.id;
+			tdName.innerHTML = user.name;
+			tdAge.innerHTML = user.age;
+			tdAddress.innerHTML = user.address;
+
+			tr.appendChild(tdId);
+			tr.appendChild(tdName);
+			tr.appendChild(tdAge);
+			tr.appendChild(tdAddress);
+			tr.appendChild(tdOption);
+
+			var tableBody = document.getElementById("tableBody");
+			tableBody.appendChild(tr);
+		}
+		function resetDrawTable(user) {
+
+			var tableBody = document.getElementById("tableBody")
+			tableBody.innerHTML = "";
+
+			for (var i = 0; i < user.length; i++) {
+				drawTr(user[i]);
+			}
+		}
+
+
+		resetDrawTable(users);
+		function createUser() {
+			var idInput = document.getElementById("id");
+			var nameInput = document.getElementById("name");
+			var ageInput = document.getElementById("age");
+			var addressInput = document.getElementById("address");
+
+			var id = idInput.value;
+			var name = nameInput.value;
+			var age = ageInput.value;
+			var address = addressInput.value;
+
+			var u = { id: id, name: name, age: age, address: address };
+			users.push(u)
+			resetDrawTable(users)
+			idInput.value = ""
+		}
+		function deleteUser(id) {
+
+			var newUsers = users.filter(u => u.id != id)
+			users = newUsers
+			resetDrawTable(users)
+		}
+		function editUser(id) {
+			let index = users.findIndex(u => u.id == id);
+			let user = users[index];
+
+			var idInput = document.getElementById("id");
+			var nameInput = document.getElementById("name");
+			var ageInput = document.getElementById("age");
+			var addressInput = document.getElementById("address");
+
+			idInput.value = user.id
+			nameInput.value = user.name
+			ageInput.value = user.age
+			addressInput.value = user.address
+
+			document.getElementById("updateBtn").style.display = "block"
+			document.getElementById("saveBtn").style.display = "none"
+		}
+		function updateBtn1() {
+			var idInput = document.getElementById("id")
+			var nameInput = document.getElementById("name")
+			var ageInput = document.getElementById("age")
+			var addressInput = document.getElementById("address")
+
+			let index = users.findIndex(u => u.id == id);
+			users[index] = { id, name, age, address }
+
+			resetDrawTable(users)
+			document.getElementById("updateBtn").style.display = "none"
+			document.getElementById("saveBtn").style.display = "block"
+		}
+		function searchUser1() {
+			var nameInput = document.getElementById("searchUser")
+			var name = nameInput.value;
+			console.log(name);
+
+			let index = users.findIndex(u => u.name == name); // ham loc nhanh hon de tim id xoas
+			let user = users[index];
+			console.log(users);
+
+			resetDrawTable([user])
+		}
+	</script>
+
+</body>
+
+</html>
