@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorator="home.html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Coupon</title>
+</head>
+<body>
+	<div layout:fragment="content" class="col-12 col-sm-9">
+		<div class="row">
+			<h6 th:text="#{category.create}"></h6>   
+		</div>
+		<hr/>
+		<div class="row">
+			<form th:object="${coupon}" th:action="@{/coupon/create}" method="post">
+				<div class="mb-3">
+					<label class="form-label" th:text="#{coupon.name}"></label> 
+					<input type="text" th:field="*{name}" class="form-control" >
+					<p th:errors=*{name}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{coupon.couponCode}"></label> 
+					<input type="text" th:field="*{couponCode}" class="form-control" >
+					<p th:errors=*{couponCode}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{coupon.discountAmount}"></label> 
+					<input type="text" th:field="*{discountAmount}" class="form-control" >
+					<p th:errors=*{discountAmount}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">ExpiredDate:</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" placeholder="yyyy-MM-dd"
+							name="expired_Date">
+					</div>
+				</div>
+				<!-- <div class="mb-3">
+					<label class="form-label" th:text="#{coupon.expiredDate}"></label> 
+					<input th:value="${expiredDate}" type="text"
+								class="form-control col" placeholder="dd/MM/yyyy" >
+					<p th:errors=*{expiredDate}></p>
+				</div> -->
+				<div class="mb-3">
+					<button class="btn btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

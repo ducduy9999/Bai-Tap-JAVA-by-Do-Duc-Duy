@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html layout:decorator="home.html">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="col-12 col-sm-9">
+		<div class="row">
+			<form th:action="@{/bill/thongkesoluong}" method="get">
+				<table class="table table-bordered">
+					<thead>
+					<tr>
+						<th>So Luong</th>
+						<th>Nguoi Mua</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr th:each="bill : ${list}">
+							<td th:text="${bill.soLuong}"></td>
+							<td th:text="${bill.thang}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+</body>
+</html>

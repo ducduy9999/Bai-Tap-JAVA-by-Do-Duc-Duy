@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html layout:decorator="home.html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create User</title>
+</head>
+<body>
+	<div layout:fragment="content" class="col-12 col-sm-9">
+		<div class="row">
+			<h6 th:text="#{user.create}"></h6>   
+		</div>
+		<hr/>
+		<div class="row">
+			<form th:object="${user}" th:action="@{/user/create}" method="post">
+				<div class="mb-3">
+					<label class="form-label" th:text="#{user.username}"></label> 
+					<input type="text" th:field="*{username}" class="form-control" >
+					<p th:errors=*{username}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{user.password}"></label> 
+					<input type="text" th:field="*{password}" class="form-control" >
+					<p th:errors=*{password}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{user.emailUser}"></label> 
+					<input type="text" th:field="*{emailUser}" class="form-control" >
+					<p th:errors=*{emailUser}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Role:</label>
+					<input type="checkbox" name="roles" value ="ROLE_ADMIN"> ADMIN
+	                <input type="checkbox" name="roles" value ="ROLE_MEMBER"> MEMBER
+				</div>
+				<div class="mb-3">
+					<button class="btn btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html> 

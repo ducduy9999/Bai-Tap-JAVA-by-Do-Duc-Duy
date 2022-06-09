@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html layout:decorator="home.html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Bill</title>
+</head>
+<body>
+	<div layout:fragment="content" class="col-12 col-sm-9">
+		<div class="row">
+			<h6>Create Bill</h6>
+		</div>
+		<hr />
+		<div class="row">
+			<form th:object="${billitems}" th:action="@{/billitems/create}" method="post">
+				<div class="mb-3">
+					<label class="form-label" th:text="#{billitems.name}"></label> 
+					<input type="text" th:field="*{name}" class="form-control" >
+					<p th:errors=*{name}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{billitems.quantity}"></label> 
+					<input type="text" th:field="*{quantity}" class="form-control" >
+					<p th:errors=*{quantity}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" th:text="#{billitems.buyPrice}"></label> 
+					<input type="text" th:field="*{buyPrice}" class="form-control" >
+					<p th:errors=*{buyPrice}></p>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Bill Id:</label> <select
+						name="bill.billId" class="form-control">
+						
+						<option th:each="b : ${bills}" th:value="${b.billId}"
+							th:text="${b.name}"></option>
+					</select>
+				</div>
+					<div class="mb-3">
+					<label class="form-label">Product Id:</label> <select
+						name="product.id" class="form-control">
+						
+						<option th:each="p : ${products}" th:value="${p.id}"
+							th:text="${p.name}"></option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<button class="btn btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
