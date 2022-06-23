@@ -22,19 +22,19 @@ import lombok.Data;
 @Data
 public class Bill {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //tự động tăng id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // tự động tăng id
 	private int billId;
 	
-	
-	@Min(value = 1, message = "{bill.quantity.min}") //validation đa ngôn ngữ
+	private String couponCode;
+	private int totalPrice;
+	private int discount;
+	private int totalPay;
+
+	@Min(value = 1, message = "{bill.quantity.min}") // validation đa ngôn ngữ
 	private int quantity;
-	
-	private int soLuong;
-	private int thang;
-	private int nguoiMua;
-	
+
 	private Date buyDate;
-	
+
 	@NotEmpty(message = "{bill.name.notempty}")
 	@Size(min = 3, message = "{bill.name.size}")
 	private String name;
@@ -42,19 +42,15 @@ public class Bill {
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
-	
-	@ManyToOne
-	@JoinColumn(name = "coupon_discountAmount")
-	private Coupon coupon;
-	
-	@ManyToOne 
-	@JoinColumn(name = "coupon_couponCode")
-	private Coupon coupon1;
-	
-	
+
+//	@ManyToOne
+//	@JoinColumn(name = "coupon_discountAmount")
+//	private Coupon coupon;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "coupon_couponCode")
+//	private Coupon coupon1;
 
 
-	
-	
-			
+
 }

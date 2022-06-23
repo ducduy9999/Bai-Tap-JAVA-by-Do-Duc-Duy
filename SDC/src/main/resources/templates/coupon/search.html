@@ -48,7 +48,7 @@
 						<td th:text="${coupon.name}"></td>
 						<td th:text="${coupon.couponCode}"></td>
 						<td th:text="${coupon.discountAmount}"></td>
-						<td th:text="${#dates.format(coupon.expiredDate, 'dd-MM-yyyy')}"></td>
+						<td th:text="${#dates.format(coupon.expiredDate, 'yyyy-MM-dd')}"></td>
 						<td><a class="text-danger"
 							th:href="@{'/coupon/delete?id=' + ${coupon.id}}">Delete</a>
 							<a th:href="@{'/coupon/update?id=' + ${coupon.id}}">Update</a>

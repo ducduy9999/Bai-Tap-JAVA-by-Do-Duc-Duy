@@ -109,7 +109,7 @@ span.psw {
 
 							<button type="submit">Login</button>
 							<label> <input type="checkbox" checked="checked"
-								name="remember"> Remember me
+								name="remember-me"> Remember me
 							</label>
 						</div>
 
@@ -117,8 +117,9 @@ span.psw {
 							<button type="button" class="cancelbtn">Cancel</button>
 							<span class="psw">Forgot <a href="#">password?</a></span>
 						</div>
+						<div th:if="${param.logout}">
+						</div>
 					</form>
-					
 				</div>
 	        </div>
         </div>

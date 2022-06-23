@@ -28,7 +28,7 @@ public class Coupon {
 	@Size(min = 3, message = "{coupon.name.size}")
 	private String name;
 	
-	private String discountAmount;
+	private int discountAmount;
 	private Date expiredDate;
 
 

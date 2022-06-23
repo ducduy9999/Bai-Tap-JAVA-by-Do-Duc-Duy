@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html layout:decorator="home.html">
 <html>
 <head>
@@ -8,16 +8,16 @@
 <body>
 	<div layout:fragment="content" class="col-12 col-sm-9">
 		<div class="row">
-			<form th:action="@{/bill/thongke}" method="get">
+
 				<table class="table table-bordered">
 					<thead>
 					<tr>
 						<th>So Luong</th>
-						<th>Thang</th>
+						<th>Nguoi mua</th>
 					</tr>
 					</thead>
 					<tbody>
-						<tr th:each="bill : ${list}">
+						<tr th:each="bill : ${thongKeTheoNguoiMuas}">
 							<td th:text="${bill.soLuong}"></td>
 							<td th:text="${bill.nguoiMua}"></td>
 						</tr>
@@ -26,4 +26,4 @@
 			</form>
 		</div>
 </body>
-</html> -->
+</html>

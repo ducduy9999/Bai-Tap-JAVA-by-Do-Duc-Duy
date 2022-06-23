@@ -14,10 +14,12 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	List<User> findByName(String s);
 
 	User findByUsername(String s);
-
+    
 	@Query("SELECT u FROM User u WHERE u.username LIKE :x")
 	Page<User> searchAl(@Param("x") String s, Pageable pageable);
 
 	@Query("SELECT u FROM User u WHERE u.id > 1")
 	Page<User> search(@Param("uId") int id, Pageable pageable);
+	
+	
 }

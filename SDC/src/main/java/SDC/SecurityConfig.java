@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.rememberMe().key("uniqueAndSecret").tokenValiditySeconds(1296000);
 		http.authorizeRequests().antMatchers("/billitems/**")
 				// .hasAnyRole("ADMIN","SUBADMIN") //role
 				.hasAnyAuthority("ROLE_ADMIN")
@@ -33,10 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().permitAll().and()
          		.csrf().disable()
 				.formLogin()
-				.loginPage("/dang-nhap")
+				.loginPage("/login")
 				.loginProcessingUrl("/login")
-				.failureUrl("/dang-nhap?err=true")
-				.defaultSuccessUrl("/category/search", true)
+				.failureUrl("/login?err=true")
+				.defaultSuccessUrl("/product/search", true)
+				.and().logout()
+				.logoutUrl("/logout").logoutSuccessUrl("/login")
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.permitAll()
 				.and().exceptionHandling().accessDeniedPage("/login");
 	}
 }

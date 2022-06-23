@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Create Bill</title>
+
 </head>
 <body>
 	<div layout:fragment="content" class="col-12 col-sm-9">
@@ -20,24 +21,40 @@
 				</div>
 				<div class="mb-3">
 					<label class="form-label" th:text="#{bill.quantity}"></label> 
-					<input type="text" th:field="*{quantity}" class="form-control" >
+					<input type="text" th:field="*{quantity}" class="form-control">
 					<p th:errors=*{quantity}></p>
 				</div>
-	       <!--      <div class="mb-3">
-					<label class="form-label">Buy Date</label> 
-					<input type="date" name="buyDate"
-						class="form-control col" placeholder="dd/MM/yyyy"">
-				</div> -->
+				
+				<!-- <div class="mb-3">
+					<label class="form-label" th:text="#{bill.couponCode}"></label> 
+					<input type="text" th:field="*{couponCode}" class="form-control" >
+					<p th:errors=*{couponCode}></p>
+				</div> --> 
+					<div class="mb-3">
+						<label class="form-label">Coupon Code:</label> <br> <input
+							type="text" name="coupon_Code" class="form-control">
+					</div>
+					
+					<div class="mb-3">
+						<label for="id" class="form-label">Total Pay:</label> <br> 
+						<input type="text" name="totalPay" class="form-control" placeholder="So tien phai tra">
+					</div>
+	        	
+					<div class="mb-3">
+						<label class="form-label">Buy Date:</label> 
+						<br> 
+						<input type="date" name="buy_Date" class="form-control" placeholder="yyyy-MM-dd">
+					</div>
+					
 				<div class="mb-3">
 					<label class="form-label" th:text="#{user.id}"></label> 
 					<select name="user.id" class="form-control">
-						
-						<option th:each="r : ${users}" th:value="${r.id}"
+					<option th:each="r : ${users}" th:value="${r.id}"
 							th:text="${r.name}"></option>
 					</select>
 				</div>
 				<div class="mb-3">
-					<button class="btn btn-primary" type="submit">Save</button>
+					<button class="btn btn-primary" type="submit">Create</button>
 				</div>
 			</form>
 		</div>

@@ -34,9 +34,6 @@ public class CouponController {
 	@Autowired // DI
 	CouponRepo couponRepo;// null
 
-	@Autowired
-	ModelMapper modelMapper;
-
 	@GetMapping("/create")
 	public String create(Model model) {
 		model.addAttribute("coupon", new Coupon());

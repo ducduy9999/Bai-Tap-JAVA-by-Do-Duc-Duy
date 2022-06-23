@@ -59,6 +59,8 @@
 						<th>UserId</th>
 						<th>Quantity</th>
 						<th>Buy Date</th>
+						<th>Coupon Code</th>
+						<th>Total Pay</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -69,6 +71,8 @@
 						<td th:text="${bill.user.id}"></td>
 						<td th:text="${bill.quantity}"></td>
 						<td th:text="${#dates.format(bill.buyDate, 'dd-MM-yyyy')}"></td>
+						<td th:text="${bill.couponCode}"></td>
+						<td th:text="${bill.totalPay}"></td>
 						<td><a class="text-danger"
 							th:href="@{'/bill/delete?id=' + ${bill.billId}}">Delete</a>
 							<a th:href="@{'/bill/update?id=' + ${bill.billId}}">Update</a>
