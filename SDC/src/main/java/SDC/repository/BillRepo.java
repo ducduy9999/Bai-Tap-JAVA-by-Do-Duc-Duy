@@ -34,10 +34,10 @@ public interface BillRepo extends JpaRepository<Bill, Integer> {
 
 	@Query("SELECT count(b.id) AS SL , MONTH(buyDate) AS thang FROM Bill b GROUP BY MONTH(buyDate)")
 	List<Object[]> thongKeTheoThang();
-	
+
 	@Query("SELECT count(b.id) AS SL , u.username AS name FROM Bill b JOIN b.user u GROUP BY u.username")
 	List<Object[]> thongKeTheoNguoiMua();
-	
+
 	@Query("SELECT count(b.id) AS SL , c.couponCode AS CouponCode FROM Bill b INNER JOIN Coupon c ON b.couponCode = c.couponCode GROUP BY c.couponCode")
 	List<Object[]> thongKeTheoCoupon();
 }

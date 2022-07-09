@@ -26,7 +26,6 @@ public class Bill {
 	private int billId;
 	
 	private String couponCode;
-	private int totalPrice;
 	private int discount;
 	private int totalPay;
 

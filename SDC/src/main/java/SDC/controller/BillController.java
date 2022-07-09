@@ -85,7 +85,6 @@ public class BillController {
 			bill.setCouponCode(couponRepo.findByCouponCode(couponCode).getCouponCode());
 		}
 		int payment = bill.getTotalPay() - bill.getTotalPay() * bill.getDiscount() / 100;
-		bill.getTotalPrice();
 		bill.setTotalPay(payment);
 		// lên lịch quét để gửi về email xem có đơn hàng
 		// convert current Date to milisecond
